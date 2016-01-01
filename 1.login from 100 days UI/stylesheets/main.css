@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+*{
+	margin:0;
+	padding: 0;
+}
+
+body{
+	height: 625px;
+	width: 465px;
+	margin: auto;
+}
+
+.login,.tab-content button{
+	font-family: "Montserrat", sans-serif;
+  	color: #fff;
+  	font-size: 14px;
+  	letter-spacing: 1px;
+}
+
+.login{
+	height: 560px;
+	width: 405px;
+	position: relative;
+	padding: 60px;
+	background: url(../images/bg1.jpg) no-repeat center center #505050;
+	box-shadow: 0px 30px 60px -5px #000;
+	background-color: #d3d3d3;
+}
+
+.tab{
+	margin-top: 80px;
+}
+
+.tab h2{
+	display: inline-block;
+	text-transform: uppercase;
+	margin-left: 12px;
+	padding-bottom: 5px;
+	letter-spacing: 2px;
+}
+
+.tab h2:first-child{
+	margin-left: 0;
+}
+
+.tab .active{
+	border-bottom: 2px solid #1161ed;
+}
+
+.tab .noactive{
+	color:rgba(255,255,255,0.2);
+}
+
+.tab-content{
+	padding-top: 50px;
+}
+
+.tab-content span{
+	display: block;
+	font-size: 12px;
+	color:rgba(255,255,255,0.4);
+}
+
+.tab-content .text{
+	display: block;
+	border: none;
+	height: 15px;
+	width: 100%;
+	margin: 10px 0 15px 0;
+	padding: 15px 20px;
+	line-height: 15px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	border: 2px solid rgba(255, 255, 255,0);
+	overflow: hidden;
+	transition: all 0.5s ease-in-out;
+}
+
+.tab-content .text:focus{
+	outline: none;
+	background: rgba(0, 0, 0, 0);
+	border-radius: 20px;
+	border: 2px solid rgba(255, 255, 255,0.5);
+
+}
+
+input[type="text"],input[type="password"] {
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+}
+
+#checkbox-signin{
+	-webkit-appearance: none;
+	display: inline-block;
+	position: relative;
+	padding: 8px;
+ 	background-color: rgba(255, 255, 255, 0.1);
+}
+
+#checkbox-signin:checked{
+	background-color: rgba(17, 97, 237, 1);
+}
+
+#checkbox-signin:checked:after{
+	content: '\2714';
+	font-size: 10px;
+	position: absolute;
+	top: 1px;
+	left: 4px;
+	color: #fff;
+}
+
+.tab-content button{
+	display: block;
+	height: 39px;
+	width: 100%;
+	padding: 10px 20px;
+	margin:30px 0 85px 0;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	border: none;
+	background-color: #1161ed;
+}
+
+.tab-content button:hover{
+  background: #4082f5;
+  box-shadow: 0px 4px 35px -5px #4082f5;
+}
+
+.tab-content button:focus{
+	outline: none;
+}
+
+.tab-content a{
+  display: block;
+  margin-top: 35px;
+   text-align: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.sign-in{
+
+}
+
+.sign-up{
+	display: none;
+}

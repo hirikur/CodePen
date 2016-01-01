@@ -1,0 +1,185 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,600,400);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: "Open Sans", sans-serif;
+	font-size: 62.5%;
+	text-align: center;
+	max-width: 100em;
+	margin: 0 auto;
+}
+
+ul{
+	list-style: none;
+}
+
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/*header*/
+.header{
+	max-width: 100em;
+	margin: 0 auto;
+}
+
+header img{
+	width: 8em;
+	height: 2em;
+	float: left;
+}
+
+header ul{
+	float: right;
+}
+
+header ul li{
+	float: left;
+	margin: 0 0.5em;
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: 2px;
+}
+
+header ul li:last-child{
+	border-color: #FFF;
+}
+
+.header{
+	background: url(../images/find-an-agent-hero.png) no-repeat center center;
+	background-size: cover;
+	color: #fff;
+}
+
+.header h1{
+	font-size: 4em;
+	padding: 1em 0 0.5em 0;
+}
+
+.header h2{
+	color: rgba(255,255,255,0.5);
+	font-size: 2em;
+}
+.header form{
+	padding: 2em 0 8em 0;
+}
+
+.header form input[type="text"]{
+	width: 18em;
+	padding: 1em;
+	border: none;
+	border-radius: 2px 0 0 2px;
+	opacity: 0.3;
+}
+
+.header form button{
+	width: 6em;
+	padding: 1em;
+	margin-left: -4px;
+	color: #FFF;
+	background-color: #6CDCAC;
+	border: none;
+	border-radius: 0 2px 2px 0;
+}
+
+/*numbers*/
+.numbers{
+	width: 70%;
+	margin:0 auto;
+}
+
+.numbers ul{
+	position: relative;
+	top: -4.5em;
+}
+
+.numbers li{
+	width: 25%;
+	float: left;
+	background-color: #EFEFEF;
+	box-sizing: border-box;
+	border-top: 1px solid #D9DADA;
+    border-bottom: 1px solid #D9DADA;
+    border-left: 1px solid #D9DADA;
+}
+
+.numbers li h2{
+	font-size: 2em;
+    padding: 1em 0;
+}
+
+.numbers li h3{
+	padding: 0 0 2em 0;
+}
+
+/*how it works*/
+.how-it-works h2{
+	font-size: 2em;
+	padding: 1em 0;
+	text-transform: uppercase;
+}
+
+.how-it-works h2:after{
+	display: block;
+	content: "";
+	background-color: rgba(0,0,0,0.5);
+	width: 2em;
+	height: 0.1em;
+	margin: 0.4em auto;
+}
+
+.how-it-works h3{
+	font-size: 2em;
+	padding: 1em 0;
+}
+
+.how-it-works ul{
+	width: 100%;
+}
+
+.how-it-works li{
+	width: 33.33%;
+	float: left;
+}
+
+.how-it-works .number{
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	margin: 1em auto 1em auto;
+	padding: 0.4em;
+	font-size: 2em;
+	border: 2px solid rgba(0,0,0,0.6);
+	border-radius: 100%;
+	text-align: center;
+}
+
+.how-it-works p{
+	font-size: 1.2em;
+	color: rgba(0,0,0,0.6);
+	margin: 0 8em;
+}
+
+.how-it-works i{
+    font-size: 3.6em;
+}
+
+.how-it-works .icon-list{
+    color: #ECA95A;
+}
+
+.how-it-works .icon-pencil{
+    color: #AC9CD2;
+}
+
+.how-it-works .icon-users{
+    color: #4D99CB;
+}
