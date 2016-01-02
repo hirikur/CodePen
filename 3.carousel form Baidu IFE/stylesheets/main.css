@@ -1,0 +1,49 @@
+body,div,ul,li,img{
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+	list-style: none;
+}
+
+.imgbox{
+	position: relative;
+	height: 400px;
+	width: 1280px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.imgbox .img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 600%;
+}
+
+.imgbox .img li{
+	float: left;
+	height: 400px;
+}
+
+.imgbox .count{
+	position: absolute;
+	left: 50%;
+	bottom: 30px;
+	margin-left: -68px;
+}
+
+.imgbox .count li{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 2px;
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #FFF;
+	border-radius: 100%;
+}
+
+.imgbox .count .active{
+	background-color: #FFF;
+}
