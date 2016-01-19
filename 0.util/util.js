@@ -100,6 +100,16 @@ function isMobilePhone(phone) {
 }
 
 /*3. DOM*/
+//hasClass
+function hasClass(element,newClassName) {
+    elClass = element.className;
+    if (elClass.indexOf(newClassName) !== -1){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // 为element增加一个样式名为newClassName的新样式
 function addClass(element, newClassName) {
     var arr = trim(element.className).split(/\s+/);
@@ -192,9 +202,11 @@ $("#adom .classa"); // 返回id为adom的DOM所包含的所有子节点中，第
 // 	}
 // }
 
+//测试通过 支持层级选择。
+//todo 看jQuery源码，学习jQuery的实现方式
 function miniQuery(selector) {
 	selector = trim(selector);
-	var keys = selector.split(/\s+/);
+	var keys = selector.split(/\s+/),
 		node = document;
 	for (var a = 0;a<keys.length;a++){
 		node = query(node,keys[a]);
@@ -207,7 +219,6 @@ function miniQuery(selector) {
             for(var i = 0;i<element.length;i++) {
                 arr =  arr.concat(querySingle(element[i],keyStr));
             }
-            return arr;
         } else {
             arr = arr.concat(querySingle(element,keyStr));
         }
@@ -215,25 +226,24 @@ function miniQuery(selector) {
     }
 
     function querySingle(element,keyStr) {
+        var result = new Array(),
+            str;
         switch(keyStr.charAt(0)) {
             case "#" : 
-                var result = new Array();
                 str = keyStr.substr(1);
-                arr.push(element.getElementById(str));
-                return arr;
+                result.push(element.getElementById(str));
+                break;
             case "." :
                 str = keyStr.substr(1);
-                var result = new Array();
                 var nodes = element.getElementsByTagName("*");
                 for (var i = 0;i<nodes.length;i++){
                     if (hasClass(nodes[i],str)) {
                         result.push(nodes[i]);
                     }
                 }
-                return result;
+                break;
             case "[" : 
                 str = keyStr.substring(1,keyStr.length);
-                var result = new Array();
                 var nodes = element.getElementsByTagName("*");
                 if (str.indexOf("=") === -1) {
                     for (var i = 0;i<nodes.length;i++){
@@ -250,13 +260,11 @@ function miniQuery(selector) {
                             result.push(nodes[i]);
                         }
                     }
-                    return result;
                 }
-
+                break;
             default : 
-                str = keyStr.substring(1,keyStr.length);
-                var result = new Array();
-                var nodes = element.getElementByTagName(str);
+                str = keyStr;
+                var nodes = element.getElementsByTagName(str);
                 try {
                     result = Array.prototype.slice.call(nodes,0)
                 } catch (ex) {
@@ -264,9 +272,93 @@ function miniQuery(selector) {
                         result.push(nodes[i]);
                     }
                 }
-                return result;
         }
+        return result;
     }
 }
 
+var $ = miniQuery;
 
+
+// 给一个element绑定一个针对event事件的响应，响应函数为listener
+function addEvent(element, event, listener) {
+    if (element.addEventListener) {
+        element.addEventListener(event,listener,false);
+    } else if (element.attachEvent) {
+        element.attachEvent("on"+event,listener);
+    } else {
+        alement["on"+event] = listener;
+    }
+}
+
+// 移除element对象对于event事件发生时执行listener的响应
+function removeEvent(element, event, listener) {
+    if (element.removeEventListener) {
+        element.removeEventListener(event,listener,false);
+    } else if (element.detachEvent) {
+        element.detachEvent("on"+event,listener);
+    } else {
+        alement["on"+event] = null;
+    }
+}
+
+// 实现对click事件的绑定
+function addClickEvent(element, listener) {
+    addEvent(element,"click",listener);
+}
+
+// 实现对于按Enter键时的事件绑定
+function addEnterEvent(element, listener) {
+    addEvent(element,"keydown",function(event){
+        if (event.keyCode === 13) {
+            listener();
+        }
+    })
+}
+
+//把上面几个函数和$做一下结合，把他们变成$对象的一些方法
+$.on(element, event, listener) = addEvent(element, event, listener);
+$.un(element, event, listener) = removeEvent(element, event, listener);
+$.click(element, listener) = addClickEvent(element, listener);
+$.enter(element, listener) = addEnterEvent(element, listener);
+
+//事件代理
+
+// 先简单一些
+function delegateEvent(element, tag, eventName, listener) {
+    addEvent(element,eventName,function(event){
+        var target = event.target || event.srcTatget;
+        if (target.tagName === tag) {
+            listener().apply(target,event);
+        }
+    })
+}
+
+$.delegate = delegateEvent;
+
+// 使用示例
+// 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
+$.delegate($("#list"), "li", "click", clickHandle);
+
+
+//把我们的事件函数做如下封装改变：
+// 使用示例：
+$.click("[data-log]", logListener);
+$.delegate('#list', "li", "click", liClicker);
+
+
+$.on(selector, event, listener) {
+    addEvent($(selector),event,listener);
+}
+
+$.click(selector, listener) {
+    addEvent($(selector),"clicl",listener);
+}
+
+$.un(selector, event, listener) {
+    removeEvent($(selector),listener);
+}
+
+$.delegate(selector, tag, event, listener) {
+    delegate($(selector),tag,event,listener);
+}
