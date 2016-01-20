@@ -327,7 +327,8 @@ $.enter(element, listener) = addEnterEvent(element, listener);
 // 先简单一些
 function delegateEvent(element, tag, eventName, listener) {
     addEvent(element,eventName,function(event){
-        var target = event.target || event.srcTatget;
+        var e = event ? event || window.event;
+        var target = e.target || event.srcTatget;
         if (target.tagName === tag) {
             listener().apply(target,event);
         }
@@ -361,4 +362,19 @@ $.un(selector, event, listener) {
 
 $.delegate(selector, tag, event, listener) {
     delegate($(selector),tag,event,listener);
+}
+
+// 判断是否为IE浏览器，返回-1或者版本号
+function isIE() {
+    // your implement
+}
+
+// 设置cookie
+function setCookie(cookieName, cookieValue, expiredays) {
+    // your implement
+}
+
+// 获取cookie值
+function getCookie(cookieName) {
+    // your implement
 }
